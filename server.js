@@ -7,9 +7,8 @@ require('dotenv').config();
 app.use(cors());
 app.use(express.json());
 const mongoose = require('mongoose');
-const PORT = process.env.PORT;
 mongoose.connect('mongodb://localhost:27017/test1', { useNewUrlParser: true, useUnifiedTopology: true });
-app.listen(PORT, () => {console.log(`✔️ You In Port : ${PORT}✔️!`);})
+app.listen(PORT, () => {console.log(`✔️ You In Port : ${process.env.PORT}✔️!`);})
 /////////////////////////// API
 class DigimonModel {constructor(name, img, level) {
     this.name = name;
@@ -80,9 +79,6 @@ const deleteBookController = (req, res) => {
         } else {
             DigModel.find({}).then(books => {
                 res.json(books);
-            })
-        }
-    })
-}
+            })}})}
 app.delete('/delete/:id', deleteBookController);
 /////////////////////////////////////////////////////
